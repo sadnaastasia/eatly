@@ -49,3 +49,15 @@ body {
 .secondary-btn:hover {
   cursor: pointer;
 }
+
+@media (max-width: 1200px) {
+  .primary-btn {
+    padding: 13px 21px;
+    font-size: 12px;
+  }
+
+  .secondary-btn {
+    padding: 13px 19px;
+    font-size: 12px;
+  }
+}

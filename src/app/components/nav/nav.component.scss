@@ -74,3 +74,9 @@
   border-top: 2px solid var(--tetriary-color);
   margin-bottom: 0;
 }
+
+@media (max-width: 1000px) {
+  .nav-btn {
+    display: none;
+  }
+}
