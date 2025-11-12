@@ -1,17 +1,36 @@
 <nav class="nav">
   <div class="nav-main mb25">
     <div class="nav-section">
-      <button class="logo-btn mr100">
+      <a class="logo-btn mr100">
         <img class="mr10" src="logo.svg" alt="logo" /><span>eatly</span>
-      </button>
-      <button class="nav-btn mr50">Menu</button>
-      <button class="nav-btn mr50">Blog</button>
-      <button class="nav-btn mr50">Pricing</button>
-      <button class="nav-btn">Contacts</button>
+      </a>
+      <a class="nav-btn mr50">Menu</a>
+      <a class="nav-btn mr50">Blog</a>
+      <a class="nav-btn mr50">Pricing</a>
+      <a class="nav-btn">Contacts</a>
     </div>
     <div class="nav-section">
-      <button class="login-btn mr18">Login</button>
-      <button class="primary-btn">Sign up</button>
+      <a routerLink="login" routerLinkActive="active" class="login-btn mr18"
+        >Login</a
+      >
+      <a routerLink="register" routerLinkActive="active" class="primary-btn"
+        >Sign up</a
+      >
+    </div>
+    <div class="burger-menu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        fill="#908F8F"
+        class="bi bi-list"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+        />
+      </svg>
     </div>
   </div>
   <hr class="nav-line" />

@@ -20,23 +20,8 @@
   align-items: center;
 }
 
-.logo-btn {
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-  border: none;
-  color: var(--primary-color);
-  font-family: var(--poppins-family);
-  font-weight: 600;
-  font-size: 21px;
-  line-height: 130%;
-}
-
-.logo-btn:hover {
-  cursor: pointer;
-}
-
 .nav-btn {
+  text-decoration: none;
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -54,6 +39,7 @@
 }
 
 .login-btn {
+  text-decoration: none;
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -69,14 +55,51 @@
   cursor: pointer;
 }
 
+.burger-menu {
+  display: none;
+  cursor: pointer;
+}
+
 .nav-line {
   border: none;
   border-top: 2px solid var(--tetriary-color);
   margin-bottom: 0;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
+  .nav {
+    padding: 57px 68px 0px;
+  }
+
+  .nav-btn {
+    font-size: 13px;
+  }
+
+  .login-btn {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 800px) {
   .nav-btn {
     display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav {
+    padding: 57px 31px 0px;
+  }
+
+  .login-btn {
+    display: none;
+  }
+
+  .primary-btn {
+    display: none;
+  }
+
+  .burger-menu {
+    display: block;
   }
 }

@@ -218,7 +218,11 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
+  .home-page_container {
+    padding: 110px 68px;
+  }
+
   .main-part__text {
     display: flex;
     flex-direction: column;
@@ -288,6 +292,10 @@
 }
 
 @media (max-width: 600px) {
+  .home-page_container {
+    padding: 93px 31px;
+  }
+
   .big-picture {
     height: 250px;
     width: 250px;

@@ -5,6 +5,7 @@
   --primary-color: #6c5fbc;
   --secondary-color: #606060;
   --tetriary-color: #d9d9d9;
+  --form-color: #f5f5f5;
   --poppins-family: "Poppins", sans-serif;
   --inter-family: "Inter", sans-serif;
 }
@@ -16,6 +17,7 @@ body {
 }
 
 .primary-btn {
+  text-decoration: none;
   padding: 18px 27px;
   background-color: var(--primary-color);
   border: 1px solid var(--primary-color);
@@ -50,14 +52,43 @@ body {
   cursor: pointer;
 }
 
-@media (max-width: 1200px) {
+.logo-btn {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: var(--primary-color);
+  font-family: var(--poppins-family);
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 130%;
+  img {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+.logo-btn:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
   .primary-btn {
     padding: 13px 21px;
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .secondary-btn {
     padding: 13px 19px;
-    font-size: 12px;
+    font-size: 13px;
+  }
+
+  .logo-btn {
+    font-size: 15px;
+    img {
+      width: 30px;
+      height: 30px;
+    }
   }
 }
