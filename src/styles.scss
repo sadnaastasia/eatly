@@ -54,6 +54,14 @@ body {
   cursor: pointer;
 }
 
+.cart-button {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .logo-btn {
   text-decoration: none;
   display: flex;

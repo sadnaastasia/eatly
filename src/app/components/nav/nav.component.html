@@ -10,12 +10,14 @@
       <a class="nav-btn">Contacts</a>
     </div>
     <div class="nav-section">
-      <a routerLink="login" routerLinkActive="active" class="login-btn mr18"
-        >Login</a
-      >
-      <a routerLink="register" routerLinkActive="active" class="primary-btn"
-        >Sign up</a
-      >
+      @if (!authService.isAuth){
+      <a routerLink="login" class="login-btn mr18">Login</a>
+      <a routerLink="register" class="primary-btn">Sign up</a>} @else {
+      <a class="cart-button mr18">
+        <img src="shopping_cart.svg" alt="" />
+      </a>
+      <button class="primary-btn">Log out</button>
+      }
     </div>
     <div class="burger-menu">
       <svg

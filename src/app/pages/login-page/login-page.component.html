@@ -5,7 +5,12 @@
         <img class="mr10" src="logo.svg" alt="logo" /><span>eatly</span>
       </a>
     </div>
-    <div class="form mb160">
+    <form
+      action=""
+      class="form mb160"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit($event)"
+    >
       <h1 class="form-title">Sign In To eatly</h1>
       <div class="btn-auth__container">
         <a class="btn-auth mr20"
@@ -43,19 +48,23 @@
       <p class="form-or">OR</p>
       <div class="input mb25">
         <img src="email.svg" alt="" />
-        <input type="email" placeholder="EMAIL" />
+        <input formControlName="username" type="text" placeholder="USERNAME" />
       </div>
       <div class="input">
         <img src="password.svg" alt="" />
-        <input type="password" placeholder="PASSWORD" />
+        <input
+          formControlName="password"
+          type="password"
+          placeholder="PASSWORD"
+        />
       </div>
       <div class="reset-password"><a>Forget Password ?</a></div>
-      <button class="form-button">SIGN UP</button>
+      <button type="submit" class="form-button">SIGN IN</button>
       <p class="form-link">
         Create A New Account?
         <a routerLink="../register" routerLinkActive="active">Sign Up</a>
       </p>
-    </div>
+    </form>
     <div class="form-footer">
       <span>Privacy Policy</span><span>Copyright 2022</span>
     </div>
