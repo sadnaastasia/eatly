@@ -10,4 +10,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavComponent {
   authService = inject(AuthService);
+
+  logout() {
+    this.authService.logout();
+  }
 }

@@ -11,7 +11,7 @@ import { TokenResponse } from './authorization.interface';
 export class AuthService {
   http: HttpClient = inject(HttpClient);
   cookieService = inject(CookieService);
-  baseApiUrl: string = 'http://localhost:8080/api/auth/';
+  baseApiUrl: string = import.meta.env.NG_APP_URL;
 
   token: string | null = null;
 
@@ -32,6 +32,11 @@ export class AuthService {
     return this.http
       .post<TokenResponse>(`${this.baseApiUrl}signin`, payload)
       .pipe(tap((res) => this.saveToken(res)));
+  }
+
+  logout() {
+    this.cookieService.deleteAll();
+    this.token = null;
   }
 
   saveToken(res: TokenResponse) {
