@@ -1,11 +1,9 @@
-:host {
-  position: fixed;
+.nav {
+  box-sizing: border-box;
   width: 100%;
   background-color: white;
   z-index: 1;
-}
-
-.nav {
+  position: fixed;
   padding: 57px 96px 0px;
 }
 
@@ -78,6 +76,10 @@
   .login-btn {
     font-size: 13px;
   }
+}
+
+.active {
+  color: var(--primary-color);
 }
 
 @media (max-width: 800px) {

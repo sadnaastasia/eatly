@@ -1,22 +1,30 @@
 <nav class="nav">
   <div class="nav-main mb25">
     <div class="nav-section">
-      <a class="logo-btn mr100">
+      <a
+        routerLink=""
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="logo-btn mr100"
+      >
         <img class="mr10" src="logo.svg" alt="logo" /><span>eatly</span>
       </a>
-      <a class="nav-btn mr50">Menu</a>
+      <a routerLink="menu" routerLinkActive="active" class="nav-btn mr50"
+        >Menu</a
+      >
       <a class="nav-btn mr50">Blog</a>
       <a class="nav-btn mr50">Pricing</a>
       <a class="nav-btn">Contacts</a>
     </div>
     <div class="nav-section">
-      @if (!authService.isAuth){
-      <a routerLink="login" class="login-btn mr18">Login</a>
-      <a routerLink="register" class="primary-btn">Sign up</a>} @else {
-      <a class="cart-button mr18">
-        <img src="shopping_cart.svg" alt="" />
-      </a>
-      <button (click)="logout()" class="primary-btn">Log out</button>
+      @if (!authService.isAuth) {
+        <a routerLink="login" class="login-btn mr18">Login</a>
+        <a routerLink="register" class="primary-btn">Sign up</a>
+      } @else {
+        <a class="cart-button mr18">
+          <img src="shopping_cart.svg" alt="" />
+        </a>
+        <button (click)="logout()" class="primary-btn">Log out</button>
       }
     </div>
     <div class="burger-menu">
@@ -37,3 +45,4 @@
   </div>
   <hr class="nav-line" />
 </nav>
+<router-outlet></router-outlet>
