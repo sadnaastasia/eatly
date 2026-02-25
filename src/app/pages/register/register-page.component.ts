@@ -24,7 +24,7 @@ export class RegisterPageComponent {
     if (this.form.valid) {
       //@ts-ignore
       this.authService.signup(this.form.value).subscribe((res) => {
-        this.router.navigate(['']);
+        this.router.navigate(['login']);
         console.log(res);
       });
     }

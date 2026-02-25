@@ -23,9 +23,7 @@ export class AuthService {
   }
 
   signup(payload: { username: string; email: string; password: string }) {
-    return this.http
-      .post<TokenResponse>(`${this.baseApiUrl}signup`, payload)
-      .pipe(tap((res) => this.saveToken(res)));
+    return this.http.post(`${this.baseApiUrl}signup`, payload);
   }
 
   login(payload: { username: string; password: string }) {
@@ -35,6 +33,11 @@ export class AuthService {
   }
 
   logout() {
+    this.http
+      .post(`${this.baseApiUrl}logout`, null, {
+        withCredentials: true,
+      })
+      .subscribe();
     this.cookieService.deleteAll();
     this.token = null;
   }

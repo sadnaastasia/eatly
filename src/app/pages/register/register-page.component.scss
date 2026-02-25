@@ -15,7 +15,6 @@
 
 .form {
   padding: 88px 193px;
-  width: 382px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -226,4 +225,97 @@
   font-weight: 500;
   line-height: 150%;
   letter-spacing: 0.2px;
+}
+
+@media (max-width: 1400px) {
+  .full-page {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form {
+    padding: 88px 100px;
+  }
+
+  .banner-image {
+    width: 80%;
+    height: 50%;
+    position: relative;
+  }
+
+  .food {
+    width: 280px;
+    height: 280px;
+  }
+
+  .notification {
+    width: 230px;
+    height: 60px;
+    top: 18%;
+    left: 45%;
+  }
+
+  .graph {
+    width: 130px;
+    height: 130px;
+    top: 58%;
+    left: 23%;
+  }
+
+  .geometric-group {
+    width: 100px;
+    height: 100px;
+    top: 0%;
+    left: 15%;
+  }
+
+  .bigger-cross-1 {
+    top: 0%;
+    left: 30%;
+  }
+
+  .small-cross {
+    position: absolute;
+    top: 10%;
+    left: 93%;
+  }
+
+  .bigger-cross-2 {
+    position: absolute;
+    top: 12%;
+    left: 95%;
+  }
+
+  .semicircle {
+    top: 63%;
+    left: 75%;
+  }
+
+  .banner-title {
+    font-family: var(--manrope-family);
+    color: white;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 110%;
+    letter-spacing: 0;
+  }
+
+  .banner-text {
+    padding-left: 70px;
+    padding-right: 70px;
+    font-family: var(--manrope-family);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: 0.2px;
+  }
+}
+
+@media (max-width: 850px) {
+  .full-page {
+    grid-template-columns: 1fr;
+  }
+  .banner {
+    display: none;
+  }
 }
