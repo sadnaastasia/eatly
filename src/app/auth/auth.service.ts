@@ -23,18 +23,18 @@ export class AuthService {
   }
 
   signup(payload: { username: string; email: string; password: string }) {
-    return this.http.post(`${this.baseApiUrl}signup`, payload);
+    return this.http.post(`${this.baseApiUrl}auth/signup`, payload);
   }
 
   login(payload: { username: string; password: string }) {
     return this.http
-      .post<TokenResponse>(`${this.baseApiUrl}signin`, payload)
+      .post<TokenResponse>(`${this.baseApiUrl}auth/signin`, payload)
       .pipe(tap((res) => this.saveToken(res)));
   }
 
   refreshAuthToken() {
     return this.http
-      .post<TokenResponse>(`${this.baseApiUrl}refresh`, null)
+      .post<TokenResponse>(`${this.baseApiUrl}auth/refresh`, null)
       .pipe(
         catchError((error) => {
           this.logout();
@@ -45,7 +45,7 @@ export class AuthService {
 
   logout() {
     this.http
-      .post(`${this.baseApiUrl}logout`, null, {
+      .post(`${this.baseApiUrl}auth/logout`, null, {
         withCredentials: true,
       })
       .subscribe();

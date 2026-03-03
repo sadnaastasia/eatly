@@ -1,1 +1,5 @@
-<p>menu works!</p>
+<div class="menu-page_container">
+  @for (dish of this.allDishes; track dish.id) {
+    <div>{{ dish.name }}</div>
+  }
+</div>
