@@ -30,6 +30,7 @@ export class RegisterPageComponent {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(5)],
       asyncValidators: [userExistsValidator(this.authService)],
+      updateOn: 'blur',
     }),
     email: new FormControl('', {
       nonNullable: true,
