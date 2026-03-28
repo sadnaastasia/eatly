@@ -59,6 +59,11 @@
         />
       </div>
       <div class="reset-password"><a>Forget Password ?</a></div>
+      @if (error) {
+        <div class="error-message">
+          <span class="alert">{{ error }}</span>
+        </div>
+      }
       <button type="submit" class="form-button">SIGN IN</button>
       <p class="form-link">
         Create A New Account?

@@ -8,3 +8,7 @@ export interface Dish {
   cooking_time: number;
   rating: number;
 }
+
+export interface Error {
+  msg: string;
+}

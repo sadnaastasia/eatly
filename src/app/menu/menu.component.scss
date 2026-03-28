@@ -1,4 +1,255 @@
 .menu-page_container {
-  padding: 184px 96px;
+  padding: 241px 104px;
   z-index: -1;
+}
+
+.search {
+  display: inline-flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 30px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.search__icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.search__input {
+  width: 250px;
+  height: 40px;
+  border: none;
+  font-style: var(--poppins-family);
+}
+
+.search__input:focus {
+  outline: none;
+}
+
+.main-dish_card {
+  width: 100%;
+  height: 490px;
+  border-radius: 55px;
+  box-shadow: 5px 50px 24px rgba(0, 0, 0, 0.06);
+  margin-bottom: 148px;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.main-dish_card:hover {
+  transform: scale(1.05);
+}
+
+.mainDish-picture {
+  width: 100%;
+  height: 378px;
+}
+
+.mainDish-info {
+  padding-left: 26px;
+  padding-right: 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainDish-label {
+  width: fit-content;
+  padding: 3px 8px;
+  font-family: var(--poppins-family);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 100%;
+  border-radius: 5px;
+  margin-bottom: 2px;
+}
+
+.mainDish-title {
+  margin: 0;
+  font-family: var(--poppins-family);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 53px;
+  color: #323142;
+}
+
+.info-middle-part {
+  display: flex;
+  align-items: center;
+  font-family: var(--manrope-family);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 35px;
+  color: #8e97a6;
+}
+
+.star {
+  width: 23px;
+  height: 23px;
+}
+
+.dot_container {
+  margin-left: 9px;
+  margin-right: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  background-color: #8e97a6;
+  border-radius: 50%;
+}
+
+.mainDish-price {
+  display: flex;
+  align-items: end;
+  font-family: var(--manrope-family);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 40px;
+  color: #121826;
+}
+
+.mainDish-price-cents {
+  height: 38px;
+  font-size: 18px;
+  color: #8e97a6;
+}
+
+.mainDish-button {
+  width: 44px;
+  height: 40px;
+  background-color: #323142;
+  border: none;
+  border-radius: 9px;
+  color: white;
+  font-size: 25px;
+}
+
+.mainDish-button:hover {
+  background-color: #3b3a40;
+  cursor: pointer;
+}
+
+.menu-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 31px;
+}
+
+.menu-card {
+  border-radius: 35px;
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.1);
+  padding: 26px 23px;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: scale(1.1);
+}
+
+.card-picture {
+  width: 100%;
+  height: 200px;
+}
+
+.card-label {
+  width: fit-content;
+  padding: 3px 8px;
+  font-family: var(--poppins-family);
+  font-size: 11.5px;
+  font-weight: 400;
+  line-height: 100%;
+  border-radius: 5px;
+  margin-bottom: 2px;
+}
+
+.healthy {
+  color: #daa31a;
+  background-color: #f7edd0;
+}
+
+.trending {
+  color: #fb471d;
+  background-color: #f7c5ba;
+}
+
+.supreme {
+  color: #309d5b;
+  background-color: #83d0a233;
+}
+
+.card-title {
+  margin: 0;
+  font-family: var(--poppins-family);
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 38px;
+  color: #323142;
+}
+
+.card-info {
+  display: flex;
+  align-items: center;
+  font-family: var(--manrope-family);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 23px;
+  color: #8e97a6;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-price {
+  display: flex;
+  align-items: center;
+  font-family: var(--manrope-family);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 40px;
+  color: #121826;
+}
+
+.card-price-cents {
+  height: 38px;
+  font-size: 18px;
+  color: #8e97a6;
+}
+
+@media (max-width: 1200px) {
+  .menu-page_container {
+    padding: 170px 40px;
+    z-index: -1;
+  }
+
+  .mainDish-picture {
+    height: 300px;
+  }
+
+  .menu-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 25px;
+  }
+
+  .menu-card {
+    padding: 6px 23px;
+  }
+  .menu-card:hover {
+    transform: scale(1.05);
+  }
 }

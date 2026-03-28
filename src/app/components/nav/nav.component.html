@@ -1,4 +1,5 @@
 <nav class="nav">
+  <div [class]="isMenuOpen ? 'overlay' : 'overlay-none'"></div>
   <div class="nav-main mb25">
     <div class="nav-section">
       <a
@@ -27,7 +28,7 @@
         <button (click)="logout()" class="primary-btn">Log out</button>
       }
     </div>
-    <div class="burger-menu">
+    <div class="burger-menu" (click)="toggleMenu()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="30"
@@ -45,4 +46,22 @@
   </div>
   <hr class="nav-line" />
 </nav>
+<div class="sidebar" [class.open]="isMenuOpen">
+  <div class="sidebar-nav">
+    <button class="close" (click)="toggleMenu()">✕</button>
+  </div>
+  <ul class="sidebar-menu">
+    <a
+      routerLink=""
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="sidebar-btn"
+      >Main Page</a
+    >
+    <a routerLink="menu" routerLinkActive="active" class="sidebar-btn">Menu</a>
+    <a class="sidebar-btn">Blog</a>
+    <a class="sidebar-btn">Pricing</a>
+    <a class="sidebar-btn">Contacts</a>
+  </ul>
+</div>
 <router-outlet></router-outlet>

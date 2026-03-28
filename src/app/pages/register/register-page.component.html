@@ -5,12 +5,7 @@
         <img class="mr10" src="logo.svg" alt="logo" /><span>eatly</span>
       </a>
     </div>
-    <form
-      action=""
-      class="form mb160"
-      [formGroup]="form"
-      (ngSubmit)="onSubmit($event)"
-    >
+    <form class="form mb160" [formGroup]="form" (ngSubmit)="onSubmit()">
       <h1 class="form-title">Sign Up To eatly</h1>
       <div class="btn-auth__container">
         <a class="btn-auth mr20"
@@ -46,22 +41,89 @@
         </a>
       </div>
       <p class="form-or">OR</p>
-      <div class="input mb25">
+      <div class="input">
         <img src="name.svg" alt="" />
-        <input formControlName="username" type="text" placeholder="USERNAME" />
+        <div>
+          <input
+            formControlName="username"
+            type="text"
+            placeholder="USERNAME"
+          />
+          <div class="alert">
+            @if (
+              form.get("username")?.touched && form.get("username")?.invalid
+            ) {
+              @if (form.get("username")?.errors?.["required"]) {
+                <span>Username is required</span>
+              }
+              @if (form.get("username")?.errors?.["minlength"]) {
+                <span>Username must be at least 5 characters long</span>
+              }
+              @if (form.get("username")?.errors?.["server"]) {
+                <span>{{ form.get("username")?.errors?.["server"] }}</span>
+              }
+              @if (form.get("username")?.errors?.["usernameTaken"]) {
+                <span>Username is taken</span>
+              }
+              @if (form.get("username")?.errors?.["serverError"]) {
+                <span>Server error</span>
+              }
+            }
+          </div>
+        </div>
       </div>
-      <div class="input mb25">
+      <div class="input mt25">
         <img src="email.svg" alt="" />
-        <input formControlName="email" type="email" placeholder="EMAIL" />
+        <div>
+          <input formControlName="email" type="email" placeholder="EMAIL" />
+          <div class="alert">
+            @if (form.get("email")?.touched && form.get("email")?.invalid) {
+              @if (form.get("email")?.errors?.["required"]) {
+                <span>Email is required</span>
+              }
+              @if (form.get("email")?.errors?.["email"]) {
+                <span
+                  >Email should have appearance as
+                  john.doe&#64;example.com</span
+                >
+              }
+              @if (form.get("email")?.errors?.["server"]) {
+                <span>{{ form.get("email")?.errors?.["server"] }}</span>
+              }
+            }
+          </div>
+        </div>
       </div>
-      <div class="input mb40">
+      <div class="input mt25 mb40">
         <img src="password.svg" alt="" />
-        <input
-          formControlName="password"
-          type="password"
-          placeholder="PASSWORD"
-        />
+        <div>
+          <input
+            formControlName="password"
+            type="password"
+            placeholder="PASSWORD"
+          />
+          <div class="alert">
+            @if (
+              form.get("password")?.touched && form.get("password")?.invalid
+            ) {
+              @if (form.get("password")?.errors?.["required"]) {
+                <span>Password is required</span>
+              }
+              @if (form.get("password")?.errors?.["minlength"]) {
+                <span>Password must be at least 5 characters long</span>
+              }
+              @if (form.get("password")?.errors?.["server"]) {
+                <span>{{ form.get("password")?.errors?.["server"] }}</span>
+              }
+            }
+          </div>
+        </div>
       </div>
+      @if (form.errors?.["serverError"]) {
+        @for (error of form.errors?.["serverError"]; track error.msg) {
+          <p>{{ error }}</p>
+        }
+      }
       <button type="submit" class="form-button">SIGN UP</button>
       <p class="form-link">
         Already Have An Account?

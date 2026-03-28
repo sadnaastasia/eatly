@@ -227,6 +227,14 @@
   letter-spacing: 0.2px;
 }
 
+.alert {
+  margin-left: 10px;
+  color: #faa5a5;
+  font-family: var(--manrope-family);
+  font-size: 10px;
+  font-weight: 500;
+}
+
 @media (max-width: 1400px) {
   .full-page {
     grid-template-columns: 1fr 1fr;

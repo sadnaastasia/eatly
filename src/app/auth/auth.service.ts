@@ -2,7 +2,15 @@ import { Injectable } from '@angular/core';
 import { inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { tap, catchError, throwError } from 'rxjs';
+import {
+  tap,
+  catchError,
+  throwError,
+  of,
+  debounceTime,
+  switchMap,
+  map,
+} from 'rxjs';
 import { TokenResponse } from './authorization.interface';
 
 @Injectable({
@@ -24,6 +32,13 @@ export class AuthService {
 
   signup(payload: { username: string; email: string; password: string }) {
     return this.http.post(`${this.baseApiUrl}auth/signup`, payload);
+  }
+
+  checkUsername(username: string) {
+    return this.http.post<{ available: boolean }>(
+      `${this.baseApiUrl}auth/check-username`,
+      { username },
+    );
   }
 
   login(payload: { username: string; password: string }) {

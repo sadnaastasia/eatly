@@ -13,18 +13,29 @@ import { AuthService } from '../../auth/auth.service';
 export class LoginPageComponent {
   router = inject(Router);
   authService = inject(AuthService);
+  error: null | string = null;
 
   form = new FormGroup({
-    username: new FormControl<string | null>(null, Validators.required),
-    password: new FormControl<string | null>(null, Validators.required),
+    username: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
+    password: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
   });
 
   onSubmit(event: Event) {
     if (this.form.valid) {
-      //@ts-ignore
-      this.authService.login(this.form.value).subscribe((res) => {
-        this.router.navigate(['']);
-        console.log(res);
+      this.authService.login(this.form.getRawValue()).subscribe({
+        next: () => {
+          this.router.navigate(['']);
+        },
+        error: (err) => {
+          this.error = err.error.message;
+          console.log(this.error);
+        },
       });
     }
   }

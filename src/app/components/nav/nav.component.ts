@@ -11,8 +11,13 @@ import { RouterOutlet } from '@angular/router';
 })
 export class NavComponent {
   authService = inject(AuthService);
+  isMenuOpen = false;
 
   logout() {
     this.authService.logout();
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }
