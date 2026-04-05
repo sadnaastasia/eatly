@@ -19,6 +19,9 @@
     </div>
     <div class="nav-section">
       @if (!authService.isAuth) {
+        <a class="cart-button mr18">
+          <img src="shopping_cart.svg" alt="" />
+        </a>
         <a routerLink="login" class="login-btn mr18">Login</a>
         <a routerLink="register" class="primary-btn">Sign up</a>
       } @else {

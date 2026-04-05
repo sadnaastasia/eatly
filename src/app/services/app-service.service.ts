@@ -13,4 +13,10 @@ export class AppServiceService {
   getAllDishes() {
     return this.http.get<Dish[]>(`${this.baseApiUrl}menu/all`);
   }
+
+  searchDish(formValue: string) {
+    return this.http.get<Dish[]>(
+      `${this.baseApiUrl}menu/search?query=${formValue}`,
+    );
+  }
 }
