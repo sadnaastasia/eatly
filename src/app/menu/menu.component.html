@@ -46,7 +46,7 @@
     </div>
   } @else {
     <div class="main-dish_card">
-      <img class="mainDish-picture" [src]="baseApiUrl + mainDish?.picture" />
+      <img class="mainDish-picture" [src]="baseApiUrl + mainDish!.picture" />
       <div class="mainDish-info">
         <div>
           <div
@@ -57,17 +57,17 @@
               supreme: mainDish?.label === 'Supreme',
             }"
           >
-            {{ mainDish?.label }}
+            {{ mainDish!.label }}
           </div>
-          <h3 class="mainDish-title">{{ mainDish?.name }}</h3>
+          <h3 class="mainDish-title">{{ mainDish!.name }}</h3>
         </div>
         <div class="info-middle-part">
-          <p class="mainDish-cooking-time">{{ mainDish?.cooking_time }}min</p>
+          <p class="mainDish-cooking-time">{{ mainDish!.cooking_time }}min</p>
           <div class="dot_container">
             <div class="dot"></div>
           </div>
           <img class="star" src="star.svg" />
-          <p>{{ mainDish?.rating }}</p>
+          <p>{{ mainDish!.rating }}</p>
         </div>
         <div class="mainDish-price">
           <span>${{ mainDish!.price | mathTrunc: "integer" }}</span>
