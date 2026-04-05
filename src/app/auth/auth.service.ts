@@ -19,7 +19,7 @@ import { TokenResponse } from './authorization.interface';
 export class AuthService {
   http: HttpClient = inject(HttpClient);
   cookieService = inject(CookieService);
-  baseApiUrl: string = import.meta.env.NG_APP_URL;
+  baseApiUrl: string = import.meta.env.NG_APP_URL + 'api/';
 
   token: string | null = null;
 

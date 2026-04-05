@@ -12,7 +12,7 @@
     <div class="menu-cards">
       @for (dish of dishes; track dish.id) {
         <div class="menu-card">
-          <img class="card-picture" [src]="dish.picture" alt="" />
+          <img class="card-picture" [src]="baseApiUrl + dish.picture" alt="" />
           <div
             class="card-label"
             [ngClass]="{
@@ -46,7 +46,7 @@
     </div>
   } @else {
     <div class="main-dish_card">
-      <img class="mainDish-picture" [src]="mainDish?.picture" />
+      <img class="mainDish-picture" [src]="baseApiUrl + mainDish?.picture" />
       <div class="mainDish-info">
         <div>
           <div
@@ -81,7 +81,7 @@
     <div class="menu-cards">
       @for (dish of allDishes; track dish.id) {
         <div class="menu-card">
-          <img class="card-picture" [src]="dish.picture" alt="" />
+          <img class="card-picture" [src]="baseApiUrl + dish.picture" alt="" />
           <div
             class="card-label"
             [ngClass]="{
@@ -113,39 +113,37 @@
         </div>
       }
       @for (dish of allDishes; track dish.id) {
-        @if (dish.id !== 3) {
-          <div class="menu-card">
-            <img class="card-picture" [src]="dish.picture" alt="" />
-            <div
-              class="card-label"
-              [ngClass]="{
-                healthy: dish.label === 'Healthy',
-                trending: dish.label === 'Trending',
-                supreme: dish.label === 'Supreme',
-              }"
-            >
-              {{ dish.label }}
-            </div>
-            <div class="card-title">{{ dish.name }}</div>
-            <div class="card-info">
-              <div class="card-cooking-time">{{ dish.cooking_time }}min</div>
-              <div class="dot_container">
-                <div class="dot"></div>
-              </div>
-              <img class="star" src="star.svg" />
-              <div class="card-rating">{{ dish.rating }}</div>
-            </div>
-            <div class="card-footer">
-              <div class="card-price">
-                <span>${{ dish.price | mathTrunc: "integer" }}</span>
-                <span class="card-price-cents">
-                  .{{ dish.price | mathTrunc: "fraction" }}
-                </span>
-              </div>
-              <button class="mainDish-button">+</button>
-            </div>
+        <div class="menu-card">
+          <img class="card-picture" [src]="baseApiUrl + dish.picture" alt="" />
+          <div
+            class="card-label"
+            [ngClass]="{
+              healthy: dish.label === 'Healthy',
+              trending: dish.label === 'Trending',
+              supreme: dish.label === 'Supreme',
+            }"
+          >
+            {{ dish.label }}
           </div>
-        }
+          <div class="card-title">{{ dish.name }}</div>
+          <div class="card-info">
+            <div class="card-cooking-time">{{ dish.cooking_time }}min</div>
+            <div class="dot_container">
+              <div class="dot"></div>
+            </div>
+            <img class="star" src="star.svg" />
+            <div class="card-rating">{{ dish.rating }}</div>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">
+              <span>${{ dish.price | mathTrunc: "integer" }}</span>
+              <span class="card-price-cents">
+                .{{ dish.price | mathTrunc: "fraction" }}
+              </span>
+            </div>
+            <button class="mainDish-button">+</button>
+          </div>
+        </div>
       }
     </div>
   }

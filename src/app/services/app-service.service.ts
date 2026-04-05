@@ -8,7 +8,7 @@ import { Dish } from './app.interface';
 })
 export class AppServiceService {
   http: HttpClient = inject(HttpClient);
-  baseApiUrl: string = import.meta.env.NG_APP_URL;
+  baseApiUrl: string = import.meta.env.NG_APP_URL + 'api/';
 
   getAllDishes() {
     return this.http.get<Dish[]>(`${this.baseApiUrl}menu/all`);

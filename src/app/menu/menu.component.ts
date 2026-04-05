@@ -33,6 +33,7 @@ export class MenuComponent implements OnInit {
   allDishes: Dish[] = [];
   filteredDishes$!: Observable<Dish[]>;
   mainDish: Dish | null = null;
+  baseApiUrl: string = import.meta.env.NG_APP_URL;
 
   search = new FormControl('', { nonNullable: true });
 
