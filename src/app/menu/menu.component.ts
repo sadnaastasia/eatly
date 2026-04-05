@@ -38,13 +38,12 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.appService.getAllDishes().subscribe((data) => {
-      this.allDishes = data.filter((dish) => dish.id !== 4);
-      this.mainDish = data[3];
+      this.allDishes = data.filter((dish) => dish.id !== 2);
+      this.mainDish = data[1];
       console.log(this.allDishes);
     });
 
     this.filteredDishes$ = this.search.valueChanges.pipe(
-      tap((v) => console.log('VALUE:', v)),
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((formValue) => this.appService.searchDish(formValue)),
