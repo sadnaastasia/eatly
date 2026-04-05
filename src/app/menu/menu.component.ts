@@ -39,8 +39,8 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.appService.getAllDishes().subscribe((data) => {
-      this.allDishes = data.filter((dish) => dish.id !== 2);
-      this.mainDish = data[1];
+      this.allDishes = data.filter((dish) => dish.id !== 1);
+      this.mainDish = data[0];
       console.log(this.allDishes);
     });
 
