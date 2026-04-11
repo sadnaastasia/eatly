@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
+import { CartItem, Dish } from './app.interface';
 import { tap } from 'rxjs';
-import { Dish } from './app.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +9,8 @@ import { Dish } from './app.interface';
 export class AppServiceService {
   http: HttpClient = inject(HttpClient);
   baseApiUrl: string = import.meta.env.NG_APP_URL + 'api/';
+
+  cart = signal<CartItem[]>([]);
 
   getAllDishes() {
     return this.http.get<Dish[]>(`${this.baseApiUrl}menu/all`);
@@ -18,5 +20,51 @@ export class AppServiceService {
     return this.http.get<Dish[]>(
       `${this.baseApiUrl}menu/search?query=${formValue}`,
     );
+  }
+
+  getAllCart() {
+    return this.http
+      .get<CartItem[]>(`${this.baseApiUrl}cart/getCart`)
+      .subscribe({
+        next: (data) => this.cart.set(data),
+        error: (err) => console.error(err),
+      });
+  }
+
+  addToCart(dishId: number) {
+    const cart = [...this.cart()];
+    const item = cart.find((i) => i.dishId === dishId);
+
+    if (item) {
+      item.quantity += 1;
+    } else {
+      cart.push({ dishId: dishId, quantity: 1 });
+    }
+
+    this.cart.set(cart);
+    this.http
+      .post(`${this.baseApiUrl}cart/add`, { dishId: dishId })
+      .subscribe();
+  }
+
+  deleteFromCart(dishId: number) {
+    const cart = [...this.cart()];
+    const item = cart.find((i) => i.dishId === dishId);
+
+    if (!item) return;
+
+    if (item.quantity === 1) {
+      this.cart.set(cart.filter((i) => i.dishId !== dishId));
+    } else {
+      item.quantity -= 1;
+      this.cart.set(cart);
+    }
+    this.http
+      .post(`${this.baseApiUrl}cart/delete`, { dishId: dishId })
+      .subscribe();
+  }
+
+  getQuantity(dishId: number): number {
+    return this.cart().find((i) => i.dishId === dishId)?.quantity || 0;
   }
 }

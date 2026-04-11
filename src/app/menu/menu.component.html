@@ -13,33 +13,52 @@
       @for (dish of dishes; track dish.id) {
         <div class="menu-card">
           <img class="card-picture" [src]="baseApiUrl + dish.picture" alt="" />
-          <div
-            class="card-label"
-            [ngClass]="{
-              healthy: dish.label === 'Healthy',
-              trending: dish.label === 'Trending',
-              supreme: dish.label === 'Supreme',
-            }"
-          >
-            {{ dish.label }}
-          </div>
-          <div class="card-title">{{ dish.name }}</div>
-          <div class="card-info">
-            <div class="card-cooking-time">{{ dish.cooking_time }}min</div>
-            <div class="dot_container">
-              <div class="dot"></div>
+          <div>
+            <div
+              class="card-label"
+              [ngClass]="{
+                healthy: dish.label === 'Healthy',
+                trending: dish.label === 'Trending',
+                supreme: dish.label === 'Supreme',
+              }"
+            >
+              {{ dish.label }}
             </div>
-            <img class="star" src="star.svg" />
-            <div class="card-rating">{{ dish.rating }}</div>
-          </div>
-          <div class="card-footer">
-            <div class="card-price">
-              <span>${{ dish.price | mathTrunc: "integer" }}</span>
-              <span class="card-price-cents">
-                .{{ dish.price | mathTrunc: "fraction" }}
-              </span>
+            <div class="card-title">{{ dish.name }}</div>
+            <div class="card-info">
+              <div class="card-cooking-time">{{ dish.cooking_time }}min</div>
+              <div class="dot_container">
+                <div class="dot"></div>
+              </div>
+              <img class="star" src="star.svg" />
+              <div class="card-rating">{{ dish.rating }}</div>
             </div>
-            <button class="mainDish-button">+</button>
+            <div class="card-footer">
+              <div class="card-price">
+                <span>${{ dish.price | mathTrunc: "integer" }}</span>
+                <span class="card-price-cents">
+                  .{{ dish.price | mathTrunc: "fraction" }}
+                </span>
+              </div>
+              @if (getQuantity(dish.id) > 0) {
+                <button
+                  class="mainDish-button"
+                  (click)="deleteFromCart(dish.id)"
+                >
+                  -
+                </button>
+
+                <span>{{ getQuantity(dish.id) }}</span>
+
+                <button class="mainDish-button" (click)="addToCart(dish.id)">
+                  +
+                </button>
+              } @else {
+                <button class="mainDish-button" (click)="addToCart(dish.id)">
+                  +
+                </button>
+              }
+            </div>
           </div>
         </div>
       }
@@ -75,40 +94,76 @@
             .{{ mainDish!.price | mathTrunc: "fraction" }}
           </span>
         </div>
-        <button class="mainDish-button">+</button>
+        @if (getQuantity(mainDish!.id) > 0) {
+          <button
+            class="mainDish-button"
+            (click)="deleteFromCart(mainDish!.id)"
+          >
+            -
+          </button>
+
+          <span>{{ getQuantity(mainDish!.id) }}</span>
+
+          <button class="mainDish-button" (click)="addToCart(mainDish!.id)">
+            +
+          </button>
+        } @else {
+          <button class="mainDish-button" (click)="addToCart(mainDish!.id)">
+            +
+          </button>
+        }
       </div>
     </div>
     <div class="menu-cards">
       @for (dish of allDishes; track dish.id) {
         <div class="menu-card">
           <img class="card-picture" [src]="baseApiUrl + dish.picture" alt="" />
-          <div
-            class="card-label"
-            [ngClass]="{
-              healthy: dish.label === 'Healthy',
-              trending: dish.label === 'Trending',
-              supreme: dish.label === 'Supreme',
-            }"
-          >
-            {{ dish.label }}
-          </div>
-          <div class="card-title">{{ dish.name }}</div>
-          <div class="card-info">
-            <div class="card-cooking-time">{{ dish.cooking_time }}min</div>
-            <div class="dot_container">
-              <div class="dot"></div>
+          <div>
+            <div
+              class="card-label"
+              [ngClass]="{
+                healthy: dish.label === 'Healthy',
+                trending: dish.label === 'Trending',
+                supreme: dish.label === 'Supreme',
+              }"
+            >
+              {{ dish.label }}
             </div>
-            <img class="star" src="star.svg" />
-            <div class="card-rating">{{ dish.rating }}</div>
-          </div>
-          <div class="card-footer">
-            <div class="card-price">
-              <span>${{ dish.price | mathTrunc: "integer" }}</span>
-              <span class="card-price-cents">
-                .{{ dish.price | mathTrunc: "fraction" }}
-              </span>
+            <div class="card-title">{{ dish.name }}</div>
+            <div class="card-info">
+              <div class="card-cooking-time">{{ dish.cooking_time }}min</div>
+              <div class="dot_container">
+                <div class="dot"></div>
+              </div>
+              <img class="star" src="star.svg" />
+              <div class="card-rating">{{ dish.rating }}</div>
             </div>
-            <button class="mainDish-button">+</button>
+            <div class="card-footer">
+              <div class="card-price">
+                <span>${{ dish.price | mathTrunc: "integer" }}</span>
+                <span class="card-price-cents">
+                  .{{ dish.price | mathTrunc: "fraction" }}
+                </span>
+              </div>
+              @if (getQuantity(dish.id) > 0) {
+                <button
+                  class="mainDish-button"
+                  (click)="deleteFromCart(dish.id)"
+                >
+                  -
+                </button>
+
+                <span>{{ getQuantity(dish.id) }}</span>
+
+                <button class="mainDish-button" (click)="addToCart(dish.id)">
+                  +
+                </button>
+              } @else {
+                <button class="mainDish-button" (click)="addToCart(dish.id)">
+                  +
+                </button>
+              }
+            </div>
           </div>
         </div>
       }
@@ -141,7 +196,21 @@
                 .{{ dish.price | mathTrunc: "fraction" }}
               </span>
             </div>
-            <button class="mainDish-button">+</button>
+            @if (getQuantity(dish.id) > 0) {
+              <button class="mainDish-button" (click)="deleteFromCart(dish.id)">
+                -
+              </button>
+
+              <span>{{ getQuantity(dish.id) }}</span>
+
+              <button class="mainDish-button" (click)="addToCart(dish.id)">
+                +
+              </button>
+            } @else {
+              <button class="mainDish-button" (click)="addToCart(dish.id)">
+                +
+              </button>
+            }
           </div>
         </div>
       }

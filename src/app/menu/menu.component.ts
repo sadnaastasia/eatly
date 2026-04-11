@@ -15,6 +15,8 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
+import { GuestService } from '../services/guest.service';
 
 @Component({
   selector: 'app-menu',
@@ -30,6 +32,8 @@ import {
 })
 export class MenuComponent implements OnInit {
   private appService = inject(AppServiceService);
+  private authService = inject(AuthService);
+  private guestService = inject(GuestService);
   allDishes: Dish[] = [];
   filteredDishes$!: Observable<Dish[]>;
   mainDish: Dish | null = null;
@@ -49,5 +53,18 @@ export class MenuComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((formValue) => this.appService.searchDish(formValue)),
     );
+    this.appService.getAllCart();
+  }
+
+  addToCart(dishId: number) {
+    this.appService.addToCart(dishId);
+  }
+
+  deleteFromCart(dishId: number) {
+    this.appService.deleteFromCart(dishId);
+  }
+
+  getQuantity(dishId: number) {
+    return this.appService.getQuantity(dishId);
   }
 }

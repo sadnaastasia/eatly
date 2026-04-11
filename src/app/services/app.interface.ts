@@ -12,3 +12,8 @@ export interface Dish {
 export interface Error {
   msg: string;
 }
+
+export interface CartItem {
+  dishId: number;
+  quantity: number;
+}
