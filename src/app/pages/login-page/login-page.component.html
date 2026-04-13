@@ -58,7 +58,9 @@
           placeholder="PASSWORD"
         />
       </div>
-      <div class="reset-password"><a>Forget Password ?</a></div>
+      <div class="reset-password">
+        <a routerLink="../forget-password">Forget Password ?</a>
+      </div>
       @if (error) {
         <div class="error-message">
           <span class="alert">{{ error }}</span>

@@ -12,7 +12,7 @@
     <div class="menu-cards">
       @for (dish of dishes; track dish.id) {
         <div class="menu-card">
-          <img class="card-picture" [src]="baseApiUrl + dish.picture" alt="" />
+          <img class="card-picture" [src]="dish.picture" alt="" />
           <div>
             <div
               class="card-label"
@@ -65,7 +65,7 @@
     </div>
   } @else {
     <div class="main-dish_card">
-      <img class="mainDish-picture" [src]="baseApiUrl + mainDish!.picture" />
+      <img class="mainDish-picture" [src]="mainDish!.picture" />
       <div class="mainDish-info">
         <div>
           <div
@@ -117,7 +117,7 @@
     <div class="menu-cards">
       @for (dish of allDishes; track dish.id) {
         <div class="menu-card">
-          <img class="card-picture" [src]="baseApiUrl + dish.picture" alt="" />
+          <img class="card-picture" [src]="dish.picture" alt="" />
           <div>
             <div
               class="card-label"
@@ -169,7 +169,7 @@
       }
       @for (dish of allDishes; track dish.id) {
         <div class="menu-card">
-          <img class="card-picture" [src]="baseApiUrl + dish.picture" alt="" />
+          <img class="card-picture" [src]="dish.picture" alt="" />
           <div
             class="card-label"
             [ngClass]="{

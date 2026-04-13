@@ -72,4 +72,15 @@ export class AuthService {
     this.token = res.accessToken;
     this.cookieService.set('token', this.token);
   }
+
+  forgotPassword(email: string) {
+    return this.http.post(`${this.baseApiUrl}auth/forgot-password`, { email });
+  }
+
+  resetPassword(token: string, password: string) {
+    return this.http.post(`${this.baseApiUrl}auth/reset-password`, {
+      token,
+      password,
+    });
+  }
 }
