@@ -10,8 +10,10 @@ import {
   debounceTime,
   switchMap,
   map,
+  concatMap,
 } from 'rxjs';
 import { TokenResponse } from './authorization.interface';
+import { AppServiceService } from '../services/app-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +22,7 @@ export class AuthService {
   http: HttpClient = inject(HttpClient);
   cookieService = inject(CookieService);
   baseApiUrl: string = import.meta.env.NG_APP_URL + 'api/';
+  appService = inject(AppServiceService);
 
   token: string | null = null;
 
@@ -46,7 +49,12 @@ export class AuthService {
       .post<TokenResponse>(`${this.baseApiUrl}auth/signin`, payload, {
         withCredentials: true,
       })
-      .pipe(tap((res) => this.saveToken(res)));
+      .pipe(
+        tap((res) => this.saveToken(res)),
+        concatMap(() => {
+          return this.appService.mergeCarts();
+        }),
+      );
   }
 
   refreshAuthToken() {

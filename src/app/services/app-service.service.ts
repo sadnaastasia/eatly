@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { CartItem, Dish } from './app.interface';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +20,12 @@ export class AppServiceService {
     return this.http.get<Dish[]>(
       `${this.baseApiUrl}menu/search?query=${formValue}`,
     );
+  }
+
+  mergeCarts() {
+    return this.http.post(`${this.baseApiUrl}cart/mergeCarts`, null, {
+      withCredentials: true,
+    });
   }
 
   getAllCart() {
