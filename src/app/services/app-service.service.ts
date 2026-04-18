@@ -24,7 +24,9 @@ export class AppServiceService {
 
   getAllCart() {
     return this.http
-      .get<CartItem[]>(`${this.baseApiUrl}cart/getCart`)
+      .get<CartItem[]>(`${this.baseApiUrl}cart/getCart`, {
+        withCredentials: true,
+      })
       .subscribe({
         next: (data) => this.cart.set(data),
         error: (err) => console.error(err),
@@ -43,7 +45,13 @@ export class AppServiceService {
 
     this.cart.set(cart);
     this.http
-      .post(`${this.baseApiUrl}cart/add`, { dishId: dishId })
+      .post(
+        `${this.baseApiUrl}cart/add`,
+        { dishId: dishId },
+        {
+          withCredentials: true,
+        },
+      )
       .subscribe();
   }
 
@@ -60,7 +68,13 @@ export class AppServiceService {
       this.cart.set(cart);
     }
     this.http
-      .post(`${this.baseApiUrl}cart/delete`, { dishId: dishId })
+      .post(
+        `${this.baseApiUrl}cart/delete`,
+        { dishId: dishId },
+        {
+          withCredentials: true,
+        },
+      )
       .subscribe();
   }
 

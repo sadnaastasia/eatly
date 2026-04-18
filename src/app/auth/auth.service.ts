@@ -43,7 +43,9 @@ export class AuthService {
 
   login(payload: { username: string; password: string }) {
     return this.http
-      .post<TokenResponse>(`${this.baseApiUrl}auth/signin`, payload)
+      .post<TokenResponse>(`${this.baseApiUrl}auth/signin`, payload, {
+        withCredentials: true,
+      })
       .pipe(tap((res) => this.saveToken(res)));
   }
 
