@@ -16,23 +16,19 @@ export class ResetPasswordComponent implements OnInit {
   password = new FormControl<string>('', {
     nonNullable: true,
   });
-  token = new FormControl<string>('', {
-    nonNullable: true,
-  });
-  message = new FormControl<string>('', {
-    nonNullable: true,
-  });
+
+  token = '';
+
+  message = '';
 
   ngOnInit() {
     this.token = this.route.snapshot.queryParams['token'];
   }
 
   submit() {
-    this.authService
-      .resetPassword(this.token.value, this.password.value)
-      .subscribe({
-        next: () => this.message.setValue('Пароль изменён'),
-        error: () => this.message.setValue('Ошибка'),
-      });
+    this.authService.resetPassword(this.token, this.password.value).subscribe({
+      next: () => (this.message = 'Password changed'),
+      error: () => (this.message = 'Error'),
+    });
   }
 }

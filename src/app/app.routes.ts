@@ -4,7 +4,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { RegisterPageComponent } from './pages/register/register-page.component';
 import { MenuComponent } from './menu/menu.component';
 import { NavComponent } from './components/nav/nav.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,6 @@ export const routes: Routes = [
   },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
-  { path: 'forget-password', component: ForgotPasswordComponent },
-  { path: 'reset-password', component: ForgotPasswordComponent },
+  { path: 'forget-password', component: ForgetPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
 ];
