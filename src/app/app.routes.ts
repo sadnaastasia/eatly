@@ -2,10 +2,10 @@ import { Routes } from '@angular/router';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { RegisterPageComponent } from './pages/register/register-page.component';
-import { MenuComponent } from './menu/menu.component';
+import { MenuComponent } from './pages/menu/menu.component';
 import { NavComponent } from './components/nav/nav.component';
-import { ForgetPasswordComponent } from './forget-password/forget-password.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 export const routes: Routes = [
   {

@@ -43,7 +43,7 @@
       <p class="form-or">OR</p>
       <div class="input">
         <img src="name.svg" alt="" />
-        <div>
+        <div class="input-wrapper">
           <input
             formControlName="username"
             type="text"
@@ -74,7 +74,7 @@
       </div>
       <div class="input mt25">
         <img src="email.svg" alt="" />
-        <div>
+        <div class="input-wrapper">
           <input formControlName="email" type="email" placeholder="EMAIL" />
           <div class="alert">
             @if (form.get("email")?.touched && form.get("email")?.invalid) {
@@ -96,7 +96,8 @@
       </div>
       <div class="input mt25 mb40">
         <img src="password.svg" alt="" />
-        <div>
+
+        <div class="input-wrapper">
           <input
             formControlName="password"
             type="password"

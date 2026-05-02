@@ -1,8 +1,8 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { AppServiceService } from '../services/app-service.service';
-import { Dish } from '../services/app.interface';
+import { AppServiceService } from '../../services/app-service.service';
+import { Dish } from '../../services/app.interface';
 import { NgClass } from '@angular/common';
-import { MathTruncPipe } from '../pipes/math-trunc.pipe';
+import { MathTruncPipe } from '../../pipes/math-trunc.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,8 +15,8 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
-import { AuthService } from '../auth/auth.service';
-import { GuestService } from '../services/guest.service';
+import { AuthService } from '../../auth/auth.service';
+import { GuestService } from '../../services/guest.service';
 
 @Component({
   selector: 'app-menu',
