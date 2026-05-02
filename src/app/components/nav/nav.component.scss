@@ -53,6 +53,27 @@
   cursor: pointer;
 }
 
+.svg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-btn-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.register-btn-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.logout-btn-icon {
+  display: none;
+  cursor: pointer;
+}
+
 .burger-menu {
   display: none;
   cursor: pointer;
@@ -69,6 +90,7 @@
 }
 
 .sidebar {
+  box-sizing: border-box;
   z-index: 7;
   display: flex;
   flex-direction: column;
@@ -165,7 +187,71 @@
     display: none;
   }
 
+  .login-btn-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .register-btn-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logout-btn-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .burger-menu {
     display: block;
+  }
+}
+
+@media (max-width: 800px) {
+  .nav-btn {
+    display: none;
+  }
+  .nav {
+    padding: 20px 10px 0px;
+  }
+
+  .login-btn {
+    display: none;
+  }
+
+  .primary-btn {
+    display: none;
+  }
+
+  .login-btn-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .register-btn-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logout-btn-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .burger-menu {
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  .sidebar {
+    width: 100%;
+    border-radius: 0;
   }
 }

@@ -319,11 +319,24 @@
   }
 }
 
+@media (max-width: 1200px) {
+  .full-page {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form {
+    padding: 88px 50px;
+  }
+}
+
 @media (max-width: 850px) {
   .full-page {
     grid-template-columns: 1fr;
   }
   .banner {
     display: none;
+  }
+  .form {
+    padding: 88px 30px;
   }
 }

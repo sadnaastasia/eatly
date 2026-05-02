@@ -57,12 +57,14 @@ body {
 .cart-button {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
 .logo-btn {
+  margin-right: 100px;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -100,5 +102,11 @@ body {
       width: 30px;
       height: 30px;
     }
+  }
+}
+
+@media (max-width: 450px) {
+  .logo-btn {
+    margin-right: 30px;
   }
 }

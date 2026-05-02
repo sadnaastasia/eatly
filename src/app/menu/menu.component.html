@@ -66,33 +66,37 @@
   } @else {
     <div class="main-dish_card">
       <img class="mainDish-picture" [src]="mainDish!.picture" />
-      <div class="mainDish-info">
-        <div>
-          <div
-            class="mainDish-label"
-            [ngClass]="{
-              healthy: mainDish?.label === 'Healthy',
-              trending: mainDish?.label === 'Trending',
-              supreme: mainDish?.label === 'Supreme',
-            }"
-          >
-            {{ mainDish!.label }}
+      <div
+        class="mainDish-label"
+        [ngClass]="{
+          healthy: mainDish?.label === 'Healthy',
+          trending: mainDish?.label === 'Trending',
+          supreme: mainDish?.label === 'Supreme',
+        }"
+      >
+        {{ mainDish!.label }}
+      </div>
+      <div class="mainDish-info-container">
+        <div class="mainDish-info">
+          <div>
+            <h3 class="mainDish-title">{{ mainDish!.name }}</h3>
           </div>
-          <h3 class="mainDish-title">{{ mainDish!.name }}</h3>
-        </div>
-        <div class="info-middle-part">
-          <p class="mainDish-cooking-time">{{ mainDish!.cooking_time }}min</p>
-          <div class="dot_container">
-            <div class="dot"></div>
+          <div class="info-middle-part">
+            <span class="mainDish-cooking-time"
+              >{{ mainDish!.cooking_time }}min</span
+            >
+            <div class="dot_container">
+              <div class="dot"></div>
+            </div>
+            <img class="star" src="star.svg" />
+            <span>{{ mainDish!.rating }}</span>
           </div>
-          <img class="star" src="star.svg" />
-          <p>{{ mainDish!.rating }}</p>
-        </div>
-        <div class="mainDish-price">
-          <span>${{ mainDish!.price | mathTrunc: "integer" }}</span>
-          <span class="mainDish-price-cents">
-            .{{ mainDish!.price | mathTrunc: "fraction" }}
-          </span>
+          <div class="mainDish-price">
+            <span>${{ mainDish!.price | mathTrunc: "integer" }}</span>
+            <span class="mainDish-price-cents">
+              .{{ mainDish!.price | mathTrunc: "fraction" }}
+            </span>
+          </div>
         </div>
         @if (getQuantity(mainDish!.id) > 0) {
           <button
