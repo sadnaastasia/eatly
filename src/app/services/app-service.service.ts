@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { CartItem, Dish } from './app.interface';
 import { Observable, tap } from 'rxjs';
 
@@ -12,8 +12,19 @@ export class AppServiceService {
 
   cart = signal<CartItem[]>([]);
 
+  getDishById(id: number) {
+    return this.http.get<Dish>(`${this.baseApiUrl}menu/dishById/${id}`);
+  }
+
   getAllDishes() {
     return this.http.get<Dish[]>(`${this.baseApiUrl}menu/all`);
+  }
+
+  getCartPrice(cart: CartItem[]) {
+    return this.http.post<{ total: number }>(
+      `${this.baseApiUrl}cart/getCartPrice`,
+      cart,
+    );
   }
 
   searchDish(formValue: string) {
@@ -86,5 +97,9 @@ export class AppServiceService {
 
   getQuantity(dishId: number): number {
     return this.cart().find((i) => i.dishId === dishId)?.quantity || 0;
+  }
+
+  getQuantityAll(cartDishes: CartItem[]) {
+    return cartDishes.reduce((sum, cartDish) => sum + cartDish.quantity, 0);
   }
 }

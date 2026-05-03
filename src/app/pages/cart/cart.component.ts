@@ -3,6 +3,7 @@ import { AppServiceService } from '../../services/app-service.service';
 import { NgClass } from '@angular/common';
 import { MathTruncPipe } from '../../pipes/math-trunc.pipe';
 import { CartItem, Dish } from '../../services/app.interface';
+import { forkJoin, map } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -13,6 +14,18 @@ import { CartItem, Dish } from '../../services/app.interface';
 export class CartComponent implements OnInit {
   private appService = inject(AppServiceService);
   cart = this.appService.cart;
+
+  sum = signal<number>(0);
+
+  computedSum = computed(() => {
+    this.appService.getCartPrice(this.cart()).subscribe({
+      next: (data) => {
+        console.log(data.total);
+        this.sum.set(data.total);
+      },
+    });
+    return this.sum();
+  });
 
   dishes = signal<Dish[]>([]);
 

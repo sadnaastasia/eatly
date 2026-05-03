@@ -18,9 +18,12 @@
       <a class="nav-btn">Contacts</a>
     </div>
     <div class="nav-section">
-      <a routerLink="cart" class="cart-button mr18">
-        <img src="shopping_cart.svg" alt="" />
-      </a>
+      <div class="cart-wrapper">
+        <a routerLink="cart" class="cart-button mr18">
+          <img src="shopping_cart.svg" alt="" />
+        </a>
+        <div class="cart-items-number">{{ quantity() }}</div>
+      </div>
       @if (!authService.isAuth) {
         <a routerLink="login" class="login-btn mr18">Login</a>
         <a routerLink="register" class="primary-btn">Sign up</a>
