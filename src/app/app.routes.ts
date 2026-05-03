@@ -6,6 +6,7 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 export const routes: Routes = [
   {
@@ -14,10 +15,11 @@ export const routes: Routes = [
     children: [
       { path: '', component: HomePageComponent, pathMatch: 'full' },
       { path: 'menu', component: MenuComponent },
+      { path: 'reset-password', component: ResetPasswordComponent },
+      { path: 'cart', component: CartComponent },
     ],
   },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'forget-password', component: ForgetPasswordComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
 ];

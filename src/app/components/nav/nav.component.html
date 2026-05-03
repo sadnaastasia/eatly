@@ -18,10 +18,10 @@
       <a class="nav-btn">Contacts</a>
     </div>
     <div class="nav-section">
+      <a routerLink="cart" class="cart-button mr18">
+        <img src="shopping_cart.svg" alt="" />
+      </a>
       @if (!authService.isAuth) {
-        <a class="cart-button mr18">
-          <img src="shopping_cart.svg" alt="" />
-        </a>
         <a routerLink="login" class="login-btn mr18">Login</a>
         <a routerLink="register" class="primary-btn">Sign up</a>
         <a routerLink="login" class="login-btn-icon mr18"
@@ -31,9 +31,6 @@
           ><img src="register.svg" alt=""
         /></a>
       } @else {
-        <a class="cart-button mr18">
-          <img src="shopping_cart.svg" alt="" />
-        </a>
         <button (click)="logout()" class="primary-btn">Log out</button>
         <button (click)="logout()" class="logout-btn-icon">
           <img src="logout.svg" alt="" />

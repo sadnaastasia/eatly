@@ -1,0 +1,60 @@
+<div class="menu-page_container">
+  @if (cart().length === 0) {
+    <p>Cart is empty</p>
+  } @else {
+    <div class="menu-cards">
+      @for (dish of filteredDishes(); track dish.id) {
+        <div class="menu-card">
+          <img class="card-picture" [src]="dish.picture" alt="" />
+          <div>
+            <div
+              class="card-label"
+              [ngClass]="{
+                healthy: dish.label === 'Healthy',
+                trending: dish.label === 'Trending',
+                supreme: dish.label === 'Supreme',
+              }"
+            >
+              {{ dish.label }}
+            </div>
+            <div class="card-title">{{ dish.name }}</div>
+            <div class="card-info">
+              <div class="card-cooking-time">{{ dish.cooking_time }}min</div>
+              <div class="dot_container">
+                <div class="dot"></div>
+              </div>
+              <img class="star" src="star.svg" />
+              <div class="card-rating">{{ dish.rating }}</div>
+            </div>
+            <div class="card-footer">
+              <div class="card-price">
+                <span>${{ dish.price | mathTrunc: "integer" }}</span>
+                <span class="card-price-cents">
+                  .{{ dish.price | mathTrunc: "fraction" }}
+                </span>
+              </div>
+              @if (getQuantity(dish.id) > 0) {
+                <button
+                  class="mainDish-button"
+                  (click)="deleteFromCart(dish.id)"
+                >
+                  -
+                </button>
+
+                <span>{{ getQuantity(dish.id) }}</span>
+
+                <button class="mainDish-button" (click)="addToCart(dish.id)">
+                  +
+                </button>
+              } @else {
+                <button class="mainDish-button" (click)="addToCart(dish.id)">
+                  +
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
